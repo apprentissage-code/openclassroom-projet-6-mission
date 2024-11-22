@@ -1,6 +1,6 @@
 <?php
 
-abstract class AbstractEnityManager {
+abstract class AbstractEntityManager {
   protected $db;
 
   public function __construct()

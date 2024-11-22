@@ -2,10 +2,10 @@
 
 session_start();
 
-define('TEMPLATE_VIEW_PATH', './views/templates/');
-define('MAIN_VIEW_PATH', TEMPLATE_VIEW_PATH . 'main.php');
+define('TEMPLATE_VIEW_PATH', './Views/Templates/');
+define('MAIN_VIEW_PATH', TEMPLATE_VIEW_PATH . 'allBooks.php');
 
 define('DB_HOST', 'localhost');
-define('DB_NAME', 'blog_forteroche');
+define('DB_NAME', 'tom_troc');
 define('DB_USER', 'root');
 define('DB_PASS', 'Lechevalcesttropgenial!2011');
