@@ -6,7 +6,7 @@ class BookManager extends AbstractEntityManager
   {
     $sql = "SELECT *
             FROM book
-            ORDER BY date_creation asc";
+            ORDER BY date_creation ASC";
 
     $result = $this->db->query($sql);
     $books = [];
@@ -15,6 +15,7 @@ class BookManager extends AbstractEntityManager
       $book = new Book($data);
       $books[] = $book;
     }
+
     return $books;
   }
 }
