@@ -1,19 +1,21 @@
 <?php
 
-class Book extends AbstractEntity
+class Book
 {
+  private string $id;
   private int $idUser;
   private string $title;
   private string $author;
   private string $description;
   private string $picture;
-  private string $status;
+  private string $status = "disponible";
   private ?DateTime $dateCreation;
   private ?DateTime $dateUpdate;
   private ?User $user = null;
 
   public function __construct(array $data)
   {
+    $this->id = $data['id'];
     $this->idUser = $data['user_id'];
     $this->title = $data['title'];
     $this->author = $data['author'];
@@ -25,6 +27,11 @@ class Book extends AbstractEntity
     if (isset($data['user'])) {
       $this->user = $data['user'];
     }
+  }
+
+  public function getId(): int
+  {
+    return $this->id;
   }
 
   public function getTitle(): string
@@ -47,10 +54,6 @@ class Book extends AbstractEntity
     return $this->status;
   }
 
-  public function setUser(User $user): void
-  {
-    $this->user = $user;
-  }
   public function getUser(UserManager $userManager): User
   {
     if ($this->user === null) {
@@ -63,9 +66,4 @@ class Book extends AbstractEntity
   {
     return $this->picture;
   }
-
-  // public function getDateCreation(): ?DateTime
-  // {
-  //   return $this->dateCreation;
-  // }
 }

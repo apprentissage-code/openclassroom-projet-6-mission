@@ -2,8 +2,8 @@
 
 session_start();
 
-define('TEMPLATE_VIEW_PATH', './Views/Templates/');
-define('MAIN_VIEW_PATH', TEMPLATE_VIEW_PATH . 'allBooks.php');
+define('TEMPLATE_VIEW_PATH', './Views/Pages/');
+define('MAIN_VIEW_PATH', TEMPLATE_VIEW_PATH . 'main.php');
 
 define('DB_HOST', 'localhost');
 define('DB_NAME', 'tom_troc');
