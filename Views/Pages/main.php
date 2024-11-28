@@ -11,9 +11,9 @@
 <body>
   <header>
     <nav>
+      <a href="index.php?action=home"><h1>Tom Troc</h1></a>
       <a href="index.php?action=allBooks">Livres</a>
     </nav>
-    <h1>Tom Troc</h1>
   </header>
 
   <main>

@@ -13,7 +13,7 @@
           <img class="picture-book" src="/Views/Images/<?= $book->getImage()?>" alt="picture-book" />
           <h2><?= $book->getTitle() ?></h2>
           <p><?= $book->getAuthor() ?></p>
-          <p>Vendu par : <?= $book->getUser($userManager)->getLogin() ?></p>
+          <p>Vendu par : <?= $book->getUser()->getLogin() ?></p>
           <p><?= ucfirst($book->getStatus()) ?></p>
         </div>
       </a>

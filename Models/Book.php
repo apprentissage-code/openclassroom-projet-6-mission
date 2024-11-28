@@ -54,11 +54,13 @@ class Book
     return $this->status;
   }
 
-  public function getUser(UserManager $userManager): User
+  public function setUser(User $user): void
   {
-    if ($this->user === null) {
-      $this->user = $userManager->getUserById($this->idUser);
-    }
+    $this->user = $user;
+  }
+
+  public function getUser(): ?User
+  {
     return $this->user;
   }
 
