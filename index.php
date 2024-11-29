@@ -26,6 +26,10 @@ try {
       $bookController->showUpdateBook();
       break;
 
+    case 'deleteBook':
+      $bookController = new BookController();
+      $bookController->deleteBook();
+
     default:
       throw new Exception("Action non reconnue.");
   }

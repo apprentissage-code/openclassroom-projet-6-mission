@@ -91,4 +91,16 @@ class BookController
       "book" => $book,
     ]);
   }
+
+  public function deleteBook(): void
+  {
+    $id = Utils::request("id", -1);
+
+    $bookManager = new BookManager();
+    $book = $bookManager->getBook($id);
+
+    $bookManager->deleteBook($book);
+
+    header("Location: index.php?action=allBooks");
+  }
 }

@@ -17,3 +17,4 @@
   <a href="#">Envoyer un message</a>
 </div>
 <a href="index.php?action=updateBook&id=<?= $book->getId()?>">Modifier les informations</a>
+<a href="index.php?action=deleteBook&id=<?= $book->getId()?>">Supprimer le livre</a>
