@@ -21,6 +21,11 @@ try {
       $bookController->showHome();
       break;
 
+    case 'updateBook':
+      $bookController = new BookController();
+      $bookController->showUpdateBook();
+      break;
+
     default:
       throw new Exception("Action non reconnue.");
   }

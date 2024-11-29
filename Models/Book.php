@@ -34,9 +34,19 @@ class Book
     return $this->id;
   }
 
+  public function setTitle($title): void
+  {
+    $this->title = $title;
+  }
+
   public function getTitle(): string
   {
     return $this->title;
+  }
+
+  public function setAuthor($author): void
+  {
+    $this->author = $author;
   }
 
   public function getAuthor(): string
@@ -44,9 +54,19 @@ class Book
     return $this->author;
   }
 
+  public function setDescription($description): void
+  {
+    $this->description = $description;
+  }
+
   public function getDescription(): string
   {
     return $this->description;
+  }
+
+  public function setStatus($status): void
+  {
+    $this->status = $status;
   }
 
   public function getStatus(): string
@@ -62,6 +82,11 @@ class Book
   public function getUser(): ?User
   {
     return $this->user;
+  }
+
+  public function setImage($picture): void
+  {
+    $this->picture = $picture;
   }
 
   public function getImage(): string
