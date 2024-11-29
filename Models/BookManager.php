@@ -56,7 +56,6 @@ class BookManager extends AbstractEntityManager
     $result = $this->db->query($sql, ['id' => $id]);
     $data = $result->fetch();
 
-
     if ($data) {
       $book = new Book($data);
       if (!empty($data['name'])) {
@@ -73,6 +72,24 @@ class BookManager extends AbstractEntityManager
     return $book;
   }
 
+  public function addBook($title, $author, $description, $picture): void
+  {
+    $sql = "INSERT INTO
+              book
+              (user_id, title, author, description, picture, status, date_creation, date_update)
+            VALUES
+              (:user_id, :title, :author, :description, :picture, :status, NOW(), NOW())
+            ";
+    $this->db->query($sql, [
+      'user_id' => 1,
+      'title' => $title,
+      'author' => $author,
+      'description' => $description,
+      'picture' => $picture,
+      'status' => "disponible"
+    ]);
+  }
+
   public function updateBook(Book $book): void
   {
     $sql = "UPDATE book
@@ -81,7 +98,7 @@ class BookManager extends AbstractEntityManager
               author = :author,
               description = :description,
               picture = :picture,
-              status = :status
+              status = :status,
             WHERE
               id = :id";
 

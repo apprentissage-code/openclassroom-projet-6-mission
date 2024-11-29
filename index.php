@@ -29,6 +29,17 @@ try {
     case 'deleteBook':
       $bookController = new BookController();
       $bookController->deleteBook();
+      break;
+
+    case 'addBook':
+      $bookController = new BookController();
+      $bookController->addBook();
+      break;
+
+    case 'admin':
+      $adminController = new AdminController();
+      $adminController->showAdmin();
+      break;
 
     default:
       throw new Exception("Action non reconnue.");

@@ -1,10 +1,12 @@
 <div class="content">
   <h1>Nos livres à l'échange</h1>
+  <a href="index.php?action=admin">Mon Compte</a>
   <div class="search-bar">
     <form action="">
       <input type="text" id="search" name="search" placeholder="Rechercher un livre">
     </form>
   </div>
+
   <div class="bookList">
     <?php foreach ($books as $book) {
       ?>

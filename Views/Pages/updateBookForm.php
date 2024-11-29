@@ -2,7 +2,7 @@
 <form action="index.php?action=updateBook&id=<?= $book->getId() ?>" method="post" enctype="multipart/form-data">
   <div class="form-photo">
     <label for="photo">Photo</label>
-    <img src="/Views/Images/<?=htmlspecialchars($book->getImage()) ?>" alt="Photo du livre" style="max-width: 150px;">
+    <img src="/Views/Images/<?=htmlspecialchars($book->getImage()) ?>" alt="Photo du livre">
     <input type="file" name="photo" id="photo" accept="image/png, image/jpeg, image/jpg">
   </div>
   <div class="form-info">

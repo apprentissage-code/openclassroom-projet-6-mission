@@ -2,7 +2,7 @@
 
 class Book
 {
-  private string $id;
+  private ?string $id;
   private int $idUser;
   private string $title;
   private string $author;
@@ -15,7 +15,7 @@ class Book
 
   public function __construct(array $data)
   {
-    $this->id = $data['id'];
+    $this->id = $data['id'] ?? null;
     $this->idUser = $data['user_id'];
     $this->title = $data['title'];
     $this->author = $data['author'];
