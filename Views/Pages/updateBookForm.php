@@ -22,7 +22,7 @@
       <label for="reserved">Réservé</label>
     </div>
     <div>
-      <input type="radio" name="status" id="borrowed" value="emprunté" <?= $book->getStatus() === 'réservé' ? 'checked' : '' ?>>
+      <input type="radio" name="status" id="borrowed" value="emprunté" <?= $book->getStatus() === 'emprunté' ? 'checked' : '' ?>>
       <label for="borrowed">Emprunté</label>
     </div>
   </div>

@@ -1,7 +1,7 @@
 <?php
 class BookController
 {
-  CONST HOME_LIMIT_BOOK = 4;
+  const HOME_LIMIT_BOOK = 4;
 
   public function showBooks(): void
   {
@@ -49,37 +49,28 @@ class BookController
       $title = Utils::request('title');
       $author = Utils::request('author');
       $description = Utils::request('description');
+      $image = ManageImage::uploadImage();
 
-      if (isset($_FILES['photo']) && $_FILES['photo']['error'] === UPLOAD_ERR_OK) {
-        $uploadDir = 'Views/Images/';
-        $photoTmpName = $_FILES['photo']['tmp_name'];
-        $photoName = basename($_FILES['photo']['name']);
-        $photoExt = strtolower(pathinfo($photoName, PATHINFO_EXTENSION));
-        $allowedExtensions = ['jpg', 'jpeg', 'png'];
-
-        if (in_array($photoExt, $allowedExtensions)) {
-          $uniqueName = uniqid('book_') . '.' . $photoExt;
-          $photoPath = $uploadDir . $uniqueName;
-
-          if (!move_uploaded_file($photoTmpName, $photoPath)) {
-            die("Erreur lors du téléchargement de la photo.");
-          }
-        } else {
-          die("Extension de fichier non autorisée.");
-        }
-      }
+      $book = new Book([
+        'title' => $title,
+        'author' => $author,
+        'description' => $description,
+        'picture' => $image,
+        'date_creation' => (new DateTime())->format('Y-m-d H:i:s'),
+        'date_update' => (new DateTime())->format('Y-m-d H:i:s')
+      ]);
 
       $bookManager = new BookManager();
-      $bookManager->addBook($title, $author, $description, $uniqueName);
+      $bookManager->addBook($book);
 
-      header("Location: index.php?action=allBooks");
+      header("Location: index.php?action=admin");
     }
 
     $view = new View("Ajouter un livre");
     $view->render("addBookForm");
   }
 
-  public function showUpdateBook(): void
+  public function updateBook(): void
   {
     $id = Utils::request("id", -1);
 
@@ -87,40 +78,21 @@ class BookController
     $book = $bookManager->getBook($id);
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-      $title = Utils::request('title');
-      $author = Utils::request('author');
-      $description = Utils::request('description');
-      $status = Utils::request('status');
 
-      $uniqueName = $book->getImage();
-      if (isset($_FILES['photo']) && $_FILES['photo']['error'] === UPLOAD_ERR_OK) {
-        $uploadDir = 'Views/Images/';
-        $photoTmpName = $_FILES['photo']['tmp_name'];
-        $photoName = basename($_FILES['photo']['name']);
-        $photoExt = strtolower(pathinfo($photoName, PATHINFO_EXTENSION));
-        $allowedExtensions = ['jpg', 'jpeg', 'png'];
+      $data = [
+        'title' => Utils::request('title'),
+        'author' => Utils::request('author'),
+        'description' => Utils::request('description'),
+        'status' => Utils::request('status'),
+        'picture' => ManageImage::uploadImage($book->getImage()),
+        'date_update' => (new DateTime())->format('Y-m-d H:i:s')
+      ];
 
-        if (in_array($photoExt, $allowedExtensions)) {
-          $uniqueName = uniqid('book_') . '.' . $photoExt;
-          $photoPath = $uploadDir . $uniqueName;
-
-          if (!move_uploaded_file($photoTmpName, $photoPath)) {
-            die("Erreur lors du téléchargement de la photo.");
-          }
-        } else {
-          die("Extension de fichier non autorisée.");
-        }
-      }
-
-      $book->setTitle($title);
-      $book->setAuthor($author);
-      $book->setDescription($description);
-      $book->setStatus($status);
-      $book->setImage($uniqueName);
+      $book->update($data);
 
       $bookManager->updateBook($book);
 
-      header("Location: index.php?action=detailBook&id=" . $book->getId());
+      header("Location: index.php?action=admin");
     }
 
     $view = new View("Modifier les informations");
@@ -138,6 +110,6 @@ class BookController
 
     $bookManager->deleteBook($book);
 
-    header("Location: index.php?action=allBooks");
+    header("Location: index.php?action=admin");
   }
 }

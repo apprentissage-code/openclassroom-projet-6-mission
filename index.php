@@ -23,7 +23,7 @@ try {
 
     case 'updateBook':
       $bookController = new BookController();
-      $bookController->showUpdateBook();
+      $bookController->updateBook();
       break;
 
     case 'deleteBook':
