@@ -1,6 +1,6 @@
 <div class="content">
   <h1>Nos livres à l'échange</h1>
-  <a href="index.php?action=admin">Mon Compte</a>
+  <a href="index.php?action=account">Mon Compte</a>
   <div class="search-bar">
   <form action="index.php" method="get">
       <input type="hidden" name="action" value="allBooks">

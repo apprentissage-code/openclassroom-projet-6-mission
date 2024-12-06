@@ -63,7 +63,7 @@ class BookController
       $bookManager = new BookManager();
       $bookManager->addBook($book);
 
-      header("Location: index.php?action=admin");
+      header("Location: index.php?action=account");
     }
 
     $view = new View("Ajouter un livre");
@@ -92,7 +92,7 @@ class BookController
 
       $bookManager->updateBook($book);
 
-      header("Location: index.php?action=admin");
+      header("Location: index.php?action=account");
     }
 
     $view = new View("Modifier les informations");
@@ -110,6 +110,6 @@ class BookController
 
     $bookManager->deleteBook($book);
 
-    header("Location: index.php?action=admin");
+    header("Location: index.php?action=account");
   }
 }

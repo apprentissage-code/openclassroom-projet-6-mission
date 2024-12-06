@@ -49,11 +49,11 @@ CREATE TABLE IF NOT EXISTS `user` (
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 INSERT INTO `user` (`id`, `login`, `email`, `password`, `nickname`) VALUES
-('1', 'Solène', 'solene.baudic@test.com', 'password', 'Solène Baudic'),
-('2', 'Paul', 'paul.durand@test.com', 'password123', 'Paul Durand'),
-('3', 'Marie', 'marie.leroux@test.com', 'password123', 'Marie Leroux'),
-('4', 'Jean', 'jean.martin@test.com', 'password123', 'Jean Martin'),
-('5', 'Claire', 'claire.benoit@test.com', 'password123', 'Claire Benoit');
+('1', 'Solène', 'solene.baudic@test.com', '$2y$10$vjwQOh1CDEFoz1ScIBs/AeiAnKxp2lUmWYnAnWMjx5PnbYIhXWkTe', 'Solène Baudic'),
+('2', 'Paul', 'paul.durand@test.com', '$2y$10$vjwQOh1CDEFoz1ScIBs/AeiAnKxp2lUmWYnAnWMjx5PnbYIhXWkTe', 'Paul Durand'),
+('3', 'Marie', 'marie.leroux@test.com', '$2y$10$vjwQOh1CDEFoz1ScIBs/AeiAnKxp2lUmWYnAnWMjx5PnbYIhXWkTe', 'Marie Leroux'),
+('4', 'Jean', 'jean.martin@test.com', '$2y$10$vjwQOh1CDEFoz1ScIBs/AeiAnKxp2lUmWYnAnWMjx5PnbYIhXWkTe', 'Jean Martin'),
+('5', 'Claire', 'claire.benoit@test.com', '$2y$10$vjwQOh1CDEFoz1ScIBs/AeiAnKxp2lUmWYnAnWMjx5PnbYIhXWkTe', 'Claire Benoit');
 
 ALTER TABLE `book`
   ADD CONSTRAINT `link_book_user` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;

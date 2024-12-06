@@ -13,6 +13,14 @@
     <nav>
       <a href="index.php?action=home"><h1>Tom Troc</h1></a>
       <a href="index.php?action=allBooks">Livres</a>
+      <a href="index.php?action=<?= isset($_SESSION['user']) ? 'account' : 'connection'?>">Mon Compte</a>
+      <?php
+      if (isset($_SESSION['user'])) {
+        echo '<a href="index.php?action=disconnect">Déconnexion</a>';
+      } else {
+        echo '<a href="index.php?action=connection">Connexion</a>';
+      }
+      ?>
     </nav>
   </header>
 

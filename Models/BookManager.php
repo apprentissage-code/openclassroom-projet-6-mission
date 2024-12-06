@@ -50,6 +50,7 @@ class BookManager extends AbstractEntityManager
       'date_creation' => $book->getDateCreation()->format('Y-m-d H:i:s'),
       'date_update' => $book->getDateUpdate()->format('Y-m-d H:i:s'),
     ];
+
     $this->db->query($sql, $params);
   }
 

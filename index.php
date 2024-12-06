@@ -36,9 +36,34 @@ try {
       $bookController->addBook();
       break;
 
-    case 'admin':
-      $adminController = new AdminController();
-      $adminController->showAdmin();
+    case 'account':
+      $accountController = new AccountController();
+      $accountController->showAccount();
+      break;
+
+    case 'connection':
+      $accountController = new AccountController();
+      $accountController->displayConnectionForm();
+      break;
+
+    case 'connectUser':
+      $accountController = new AccountController();
+      $accountController->connectUser();
+      break;
+
+    case 'disconnect':
+      $accountController = new AccountController();
+      $accountController->disconnectUser();
+      break;
+
+    case 'registration':
+      $accountController = new AccountController();
+      $accountController->displayRegistrationForm();
+      break;
+
+    case 'registrateUser':
+      $accountController = new AccountController();
+      $accountController->registrateUser();
       break;
 
     default:
