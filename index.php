@@ -3,7 +3,7 @@
 require_once 'config/config.php';
 require_once 'config/autoload.php';
 
-$action = Utils::request('action');
+$action = Utils::request('action') ?? 'home';
 try {
   switch ($action) {
     case 'allBooks':

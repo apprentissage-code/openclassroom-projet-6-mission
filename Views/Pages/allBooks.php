@@ -2,8 +2,10 @@
   <h1>Nos livres à l'échange</h1>
   <a href="index.php?action=admin">Mon Compte</a>
   <div class="search-bar">
-    <form action="">
-      <input type="text" id="search" name="search" placeholder="Rechercher un livre">
+  <form action="index.php" method="get">
+      <input type="hidden" name="action" value="allBooks">
+      <input type="text" id="search" name="search" placeholder="Rechercher un livre" value="<?= htmlspecialchars($_GET['search'] ?? '') ?>">
+      <button type="submit">Rechercher</button>
     </form>
   </div>
 

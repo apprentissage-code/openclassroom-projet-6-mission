@@ -6,7 +6,8 @@ class BookController
   public function showBooks(): void
   {
     $bookManager = new BookManager();
-    $books = $bookManager->getBooks();
+    $searchQuery = $_GET['search'] ?? '';
+    $books = $bookManager->getBooks($searchQuery);
 
     $view = new View("Tous nos livres");
     $view->render("allBooks", [
@@ -34,7 +35,7 @@ class BookController
   public function showHome(): void
   {
     $bookManager = new BookManager();
-    $books = $bookManager->getBooks(self::HOME_LIMIT_BOOK);
+    $books = $bookManager->getBooks('', self::HOME_LIMIT_BOOK);
 
     $view = new View("home");
     $view->render("home", [

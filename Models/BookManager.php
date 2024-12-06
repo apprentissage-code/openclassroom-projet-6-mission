@@ -2,7 +2,7 @@
 
 class BookManager extends AbstractEntityManager
 {
-  public function getBooks(string $limit = null): array
+  public function getBooks(string $searchQuery = '', string $limit = null): array
   {
     $sql = "SELECT
               book.*,
@@ -11,15 +11,24 @@ class BookManager extends AbstractEntityManager
               user.password,
               user.nickname
             FROM book
-            LEFT JOIN user ON user.id = book.user_id
-            ORDER BY date_creation ASC";
+            LEFT JOIN user ON user.id = book.user_id";
+
+    if (!empty($searchQuery)) {
+      $sql .= " WHERE book.title LIKE :searchQuery";
+    }
+
+    $sql .= " ORDER BY date_creation ASC";
 
     if ($limit !== null) {
       $sql .= " LIMIT " . intval($limit);
-      $result = $this->db->query($sql);
+    }
+
+    if (!empty($searchQuery)) {
+      $result = $this->db->query($sql, ['searchQuery' => $searchQuery]);
     } else {
       $result = $this->db->query($sql);
     }
+
     $books = [];
 
     while ($data = $result->fetch()) {
