@@ -12,7 +12,9 @@
   <header>
     <nav>
       <a href="index.php?action=home"><h1>Tom Troc</h1></a>
-      <a href="index.php?action=allBooks">Livres</a>
+      <a href="index.php?action=home"><h1>Accueil</h1></a>
+      <a href="index.php?action=allBooks">Nos livres à l'échange</a>
+      <a href="#">Messagerie</a>
       <a href="index.php?action=<?= isset($_SESSION['user']) ? 'account' : 'connection'?>">Mon Compte</a>
       <?php
       if (isset($_SESSION['user'])) {
@@ -29,7 +31,9 @@
   </main>
 
   <footer>
-    <p>Copyright © Tom Troc 2023 - Openclassrooms</a>
+    <p>Politiques de confidentialité</p>
+    <p>Mentions légales</p>
+    <p>Tom Troc ©</a>
   </footer>
 
 </body>

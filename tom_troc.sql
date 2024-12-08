@@ -45,15 +45,17 @@ CREATE TABLE IF NOT EXISTS `user` (
   `email` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   `nickname` varchar(255) NOT NULL,
+  `picture` text NOT NULL,
+  `date_creation` datetime NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
-INSERT INTO `user` (`id`, `login`, `email`, `password`, `nickname`) VALUES
-('1', 'Solène', 'solene.baudic@test.com', '$2y$10$vjwQOh1CDEFoz1ScIBs/AeiAnKxp2lUmWYnAnWMjx5PnbYIhXWkTe', 'Solène Baudic'),
-('2', 'Paul', 'paul.durand@test.com', '$2y$10$vjwQOh1CDEFoz1ScIBs/AeiAnKxp2lUmWYnAnWMjx5PnbYIhXWkTe', 'Paul Durand'),
-('3', 'Marie', 'marie.leroux@test.com', '$2y$10$vjwQOh1CDEFoz1ScIBs/AeiAnKxp2lUmWYnAnWMjx5PnbYIhXWkTe', 'Marie Leroux'),
-('4', 'Jean', 'jean.martin@test.com', '$2y$10$vjwQOh1CDEFoz1ScIBs/AeiAnKxp2lUmWYnAnWMjx5PnbYIhXWkTe', 'Jean Martin'),
-('5', 'Claire', 'claire.benoit@test.com', '$2y$10$vjwQOh1CDEFoz1ScIBs/AeiAnKxp2lUmWYnAnWMjx5PnbYIhXWkTe', 'Claire Benoit');
+INSERT INTO `user` (`id`, `login`, `email`, `password`, `nickname`, `picture`, `date_creation`) VALUES
+('1', 'Solène', 'solene.baudic@test.com', '$2y$10$vjwQOh1CDEFoz1ScIBs/AeiAnKxp2lUmWYnAnWMjx5PnbYIhXWkTe', 'Solène Baudic', 'femme-profil.jpg', '2024-02-01'),
+('2', 'Paul', 'paul.durand@test.com', '$2y$10$vjwQOh1CDEFoz1ScIBs/AeiAnKxp2lUmWYnAnWMjx5PnbYIhXWkTe', 'Paul Durand', 'homme-profil.jpg', '2024-01-01'),
+('3', 'Marie', 'marie.leroux@test.com', '$2y$10$vjwQOh1CDEFoz1ScIBs/AeiAnKxp2lUmWYnAnWMjx5PnbYIhXWkTe', 'Marie Leroux', 'femme-profil.jpg', '2024-01-10'),
+('4', 'Jean', 'jean.martin@test.com', '$2y$10$vjwQOh1CDEFoz1ScIBs/AeiAnKxp2lUmWYnAnWMjx5PnbYIhXWkTe', 'Jean Martin', 'homme-profil.jpg', '2024-01-01'),
+('5', 'Claire', 'claire.benoit@test.com', '$2y$10$vjwQOh1CDEFoz1ScIBs/AeiAnKxp2lUmWYnAnWMjx5PnbYIhXWkTe', 'Claire Benoit', 'femme-profil.jpg', '2024-01-01');
 
 ALTER TABLE `book`
   ADD CONSTRAINT `link_book_user` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;

@@ -41,6 +41,11 @@ try {
       $accountController->showAccount();
       break;
 
+    case 'accountPublic':
+      $accountController = new AccountController();
+      $accountController->showAccountPublic();
+      break;
+
     case 'connection':
       $accountController = new AccountController();
       $accountController->displayConnectionForm();
@@ -64,6 +69,11 @@ try {
     case 'registrateUser':
       $accountController = new AccountController();
       $accountController->registrateUser();
+      break;
+
+    case 'updateUser':
+      $accountController = new AccountController();
+      $accountController->updateUser();
       break;
 
     default:

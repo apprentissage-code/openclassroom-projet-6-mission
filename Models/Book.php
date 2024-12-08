@@ -16,7 +16,7 @@ class Book
   public function __construct(array $data)
   {
     $this->id = $data['id'] ?? null;
-    $this->idUser = $data['user_id'] ?? 1;
+    $this->idUser = $data['user_id'];
     $this->title = $data['title'];
     $this->author = $data['author'];
     $this->description = $data['description'];
@@ -113,12 +113,12 @@ class Book
   {
     foreach ($data as $key => $value) {
       if ($key === 'user_id' && $value === null) {
-          $value = $this->idUser;
+        $value = $this->idUser;
       }
       $method = 'set' . ucfirst($key);
       if (method_exists($this, $method)) {
-          $this->$method($value);
+        $this->$method($value);
       }
-  }
+    }
   }
 }

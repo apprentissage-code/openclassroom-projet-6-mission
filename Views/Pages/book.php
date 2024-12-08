@@ -12,7 +12,10 @@
   </div>
   <div class="owner">
     <h3><?= strtoupper("Propriétaire") ?></h3>
-    <p><?= $book->getUser()->getLogin() ?></p>
+    <a href="index.php?action=accountPublic&id=<?= $user->getId()?>">
+      <img src="Views/Images/<?=$user->getPicture()?>" alt="profil-picture" style="width:50px;">
+      <p><?= $book->getUser()->getLogin() ?></p>
+    </a>
   </div>
   <a href="#">Envoyer un message</a>
 </div>

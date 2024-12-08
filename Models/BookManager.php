@@ -21,6 +21,19 @@ class BookManager extends AbstractEntityManager
     return $this->getBookData($sql, $params);
   }
 
+  public function getBooksByUser(int $userId): array
+  {
+    $sql = "SELECT * FROM book WHERE user_id = :user_id ORDER BY date_creation DESC";
+    $result = $this->db->query($sql, ['user_id' => $userId]);
+
+    $books = [];
+    while ($data = $result->fetch()) {
+      $books[] = new Book($data);
+    }
+
+    return $books;
+  }
+
   public function getBook(int $id): ?Book
   {
     $sql = $this->getBaseSelectQuery();
