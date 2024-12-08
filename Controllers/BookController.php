@@ -28,7 +28,7 @@ class BookController
 
     $userManager = new UserManager();
     $user = $userManager-> getUserById($_SESSION['idUser']);
-
+    // var_dump($book->getUser());die;
     $view = new View($book->getTitle());
     $view->render("book", [
       "book" => $book,

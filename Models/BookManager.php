@@ -104,7 +104,8 @@ class BookManager extends AbstractEntityManager
                   user.login AS name,
                   user.email,
                   user.password,
-                  user.nickname
+                  user.nickname,
+                  user.picture AS userPicture
                 FROM book
                 LEFT JOIN user ON user.id = book.user_id";
   }
@@ -133,6 +134,7 @@ class BookManager extends AbstractEntityManager
       'email' => $data['email'],
       'password' => $data['password'],
       'nickname' => $data['nickname'],
+      'picture' => $data['userPicture']
     ]);
   }
 }

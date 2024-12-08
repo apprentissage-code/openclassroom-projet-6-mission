@@ -12,8 +12,8 @@
   </div>
   <div class="owner">
     <h3><?= strtoupper("Propriétaire") ?></h3>
-    <a href="index.php?action=accountPublic&id=<?= $user->getId()?>">
-      <img src="Views/Images/<?=$user->getPicture()?>" alt="profil-picture" style="width:50px;">
+    <a href="index.php?action=accountPublic&id=<?= $book->getUser()->getId()?>">
+      <img src="Views/Images/<?=$book->getUser()->getPicture()?>" alt="profil-picture" style="width:50px;">
       <p><?= $book->getUser()->getLogin() ?></p>
     </a>
   </div>

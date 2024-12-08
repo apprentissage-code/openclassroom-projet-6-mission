@@ -17,7 +17,7 @@ class User
     $this->email = $data['email'];
     $this->password = $data['password'];
     $this->nickname = $data['nickname'] ?? "";
-    $this->picture = $data['picture'];
+    $this->picture = $data['picture'] ?? "";
     $this->dateCreation = new DateTime($data['date_creation']);
   }
 
