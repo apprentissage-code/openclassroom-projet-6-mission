@@ -1,11 +1,10 @@
 <?php
 
-class AccountController
+class AccountController extends AbstractEntityController
 {
   public function showAccount(): void
   {
-    $userManager = new UserManager();
-    $user = $userManager->getUserById($_SESSION['idUser']);
+    $user = $this->getCurrentUser();
 
     if (!$user) {
       header("Location: index.php?action=connection");
@@ -39,64 +38,61 @@ class AccountController
     ]);
   }
 
-  public function displayConnectionForm(): void
+  public function connectUser(): void
   {
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+      $email = Utils::request("email");
+      $password = Utils::request("password");
+
+      if (empty($email) || empty($password)) {
+        throw new Exception("Tous les champs sont obligatoires.");
+      }
+
+      $userManager = new UserManager();
+      $user = $userManager->getUserByEmail($email);
+      if (!$user) {
+        throw new Exception("L'utilisateur demandé n'existe pas.");
+      }
+
+      if (!password_verify($password, $user->getPassword())) {
+        $hash = password_hash($password, PASSWORD_DEFAULT);
+        throw new Exception("Le mot de passe est incorrect.");
+      }
+
+      $_SESSION['user'] = $user;
+
+      header("Location: index.php?action=account");
+    }
+
     $view = new View("Connexion");
     $view->render("connectionForm");
   }
 
-  public function connectUser(): void
-  {
-    $email = Utils::request("email");
-    $password = Utils::request("password");
-
-    if (empty($email) || empty($password)) {
-      throw new Exception("Tous les champs sont obligatoires. 1");
-    }
-
-    $userManager = new UserManager();
-    $user = $userManager->getUserByEmail($email);
-    if (!$user) {
-      throw new Exception("L'utilisateur demandé n'existe pas.");
-    }
-
-    if (!password_verify($password, $user->getPassword())) {
-      $hash = password_hash($password, PASSWORD_DEFAULT);
-      throw new Exception("Le mot de passe est incorrect : $hash");
-    }
-
-    $_SESSION['user'] = $user;
-    $_SESSION['idUser'] = $user->getId();
-
-    header("Location: index.php?action=account");
-  }
-
-  public function displayRegistrationForm(): void
-  {
-    $view = new View("Inscription");
-    $view->render("registrationForm");
-  }
-
   public function registrateUser(): void
   {
-    $login = Utils::request("login");
-    $email = Utils::request("email");
-    $password = Utils::request("password");
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+      $login = Utils::request("login");
+      $email = Utils::request("email");
+      $password = Utils::request("password");
 
-    if (empty($email) || empty($password) || empty($login)) {
-      throw new Exception("Tous les champs sont obligatoires. 1");
+      if (empty($email) || empty($password) || empty($login)) {
+        throw new Exception("Tous les champs sont obligatoires.");
+      }
+
+      $user = new User([
+        'login' => $login,
+        'email' => $email,
+        'password' => password_hash($password, PASSWORD_DEFAULT)
+      ]);
+
+      $userManager = new UserManager();
+      $user = $userManager->registrate($user);
+
+      header("Location: index.php?action=connection");
     }
 
-    $user = new User([
-      'login' => $login,
-      'email' => $email,
-      'password' => password_hash($password, PASSWORD_DEFAULT)
-    ]);
-
-    $userManager = new UserManager();
-    $user = $userManager->registrate($user);
-
-    header("Location: index.php?action=connection");
+    $view = new View("Inscription");
+    $view->render("registrationForm");
   }
 
   public function disconnectUser(): void
@@ -108,7 +104,7 @@ class AccountController
 
   public function updateUser(): void
   {
-    $id = $_SESSION["idUser"];
+    $id = $this->getCurrentUser()->getId();
 
     $userManager = new UserManager;
     $user = $userManager->getUserById($id);

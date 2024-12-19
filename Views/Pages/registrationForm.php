@@ -1,5 +1,5 @@
 <div class="connection-form">
-  <form action="index.php?action=registrateUser" method="post" class="foldedCorner">
+  <form action="index.php?action=registration" method="post" class="foldedCorner">
     <h2>Inscription</h2>
     <div class="formGrid">
       <label for="login">Pseudo</label>

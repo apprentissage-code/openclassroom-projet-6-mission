@@ -1,11 +1,11 @@
 <?php
 
-class ChatController
+class ChatController extends AbstractEntityController
 {
   public function showChat(): void
   {
     $receiverId = Utils::request("receiver_id", -1);
-    $senderId = $_SESSION['idUser'];
+    $senderId = $this->getCurrentUser()->getId();
     $content = Utils::request('content');
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {

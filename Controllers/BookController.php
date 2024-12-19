@@ -1,5 +1,5 @@
 <?php
-class BookController
+class BookController extends AbstractEntityController
 {
   const HOME_LIMIT_BOOK = 4;
 
@@ -26,8 +26,7 @@ class BookController
       throw new Exception("Le livre demandé n'existe pas.");
     }
 
-    $userManager = new UserManager();
-    $user = $userManager-> getUserById($_SESSION['idUser']);
+    $user = $this->getCurrentUser();
 
     $view = new View($book->getTitle());
     $view->render("book", [
@@ -54,10 +53,10 @@ class BookController
       $author = Utils::request('author');
       $description = Utils::request('description');
       $image = ManageImage::uploadImage();
-      $idUser = $_SESSION['idUser'];
+      $user = $this->getCurrentUser();
 
       $book = new Book([
-        'user_id' => $idUser,
+        'user_id' => $user->getId(),
         'title' => $title,
         'author' => $author,
         'description' => $description,

@@ -3,6 +3,8 @@
 require_once 'config/config.php';
 require_once 'config/autoload.php';
 
+session_start();
+
 $action = Utils::request('action') ?? 'home';
 try {
   switch ($action) {
@@ -48,11 +50,6 @@ try {
 
     case 'connection':
       $accountController = new AccountController();
-      $accountController->displayConnectionForm();
-      break;
-
-    case 'connectUser':
-      $accountController = new AccountController();
       $accountController->connectUser();
       break;
 
@@ -62,11 +59,6 @@ try {
       break;
 
     case 'registration':
-      $accountController = new AccountController();
-      $accountController->displayRegistrationForm();
-      break;
-
-    case 'registrateUser':
       $accountController = new AccountController();
       $accountController->registrateUser();
       break;

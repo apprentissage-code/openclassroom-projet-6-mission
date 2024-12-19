@@ -1,5 +1,5 @@
 <div class="connection-form">
-    <form action="index.php?action=connectUser" method="post" class="foldedCorner">
+    <form action="index.php?action=connection" method="post" class="foldedCorner">
         <h2>Connexion</h2>
         <div class="formGrid">
             <label for="email">Email</label>

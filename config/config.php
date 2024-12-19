@@ -1,6 +1,6 @@
 <?php
 
-session_start();
+
 
 define('TEMPLATE_VIEW_PATH', './Views/Pages/');
 define('MAIN_VIEW_PATH', TEMPLATE_VIEW_PATH . 'main.php');

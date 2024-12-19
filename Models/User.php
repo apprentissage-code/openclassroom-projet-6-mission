@@ -75,8 +75,7 @@ class User
   {
     $now = new DateTime();
     $seniority = $this->dateCreation->diff($now);
-    if ($seniority->format('%Y') == 0)
-    {
+    if ($seniority->format('%Y') == 0) {
       return $seniority->format('%m') . " mois";
     } else {
       return $seniority->format('%Y') . " an";

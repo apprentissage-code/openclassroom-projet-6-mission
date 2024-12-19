@@ -28,15 +28,17 @@ class UserManager extends AbstractEntityManager
   {
     $sql = "INSERT INTO
             user
-            (login, email, password, nickname)
+            (login, email, password, nickname, picture, date_creation)
             VALUES
-            (:login, :email, :password, :nickname)";
+            (:login, :email, :password, :nickname, :picture, :date_creation)";
 
     $params = [
       'login' => $user->getLogin(),
       'email' => $user->getEmail(),
       'password' => $user->getPassword(),
-      'nickname' => $user->getNickname()
+      'nickname' => $user->getNickname(),
+      'picture' => $user->getPicture(),
+      'date_creation' => $user->getDateCreation()->format('Y-m-d H:i:s')
     ];
 
     $this->db->query($sql, $params);
