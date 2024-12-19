@@ -14,7 +14,7 @@
       <a href="index.php?action=home"><h1>Tom Troc</h1></a>
       <a href="index.php?action=home"><h1>Accueil</h1></a>
       <a href="index.php?action=allBooks">Nos livres à l'échange</a>
-      <a href="#">Messagerie</a>
+      <a href="index.php?action=chat&receiver_id=1">Messagerie</a>
       <a href="index.php?action=<?= isset($_SESSION['user']) ? 'account' : 'connection'?>">Mon Compte</a>
       <?php
       if (isset($_SESSION['user'])) {

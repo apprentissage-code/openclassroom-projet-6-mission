@@ -76,6 +76,11 @@ try {
       $accountController->updateUser();
       break;
 
+    case 'chat':
+      $chatController = new ChatController();
+      $chatController->showChat();
+      break;
+
     default:
       throw new Exception("Action non reconnue.");
   }

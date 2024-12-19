@@ -57,6 +57,30 @@ INSERT INTO `user` (`id`, `login`, `email`, `password`, `nickname`, `picture`, `
 ('4', 'Jean', 'jean.martin@test.com', '$2y$10$vjwQOh1CDEFoz1ScIBs/AeiAnKxp2lUmWYnAnWMjx5PnbYIhXWkTe', 'Jean Martin', 'homme-profil.jpg', '2024-01-01'),
 ('5', 'Claire', 'claire.benoit@test.com', '$2y$10$vjwQOh1CDEFoz1ScIBs/AeiAnKxp2lUmWYnAnWMjx5PnbYIhXWkTe', 'Claire Benoit', 'femme-profil.jpg', '2024-01-01');
 
+DROP TABLE IF EXISTS `messages`;
+CREATE TABLE `messages` (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    sender_id INT NOT NULL,
+    receiver_id INT NOT NULL,
+    message TEXT NOT NULL,
+    sent_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    is_read TINYINT(1) DEFAULT FALSE,
+    FOREIGN KEY (`sender_id`) REFERENCES `user`(`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+    FOREIGN KEY (`receiver_id`) REFERENCES `user`(`id`) ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+INSERT INTO messages (sender_id, receiver_id, message, sent_at, is_read) VALUES
+(1, 2, 'Salut, comment ça va ?', '2024-06-10 09:45:00', FALSE),
+(2, 1, 'Ça va bien, et toi ?', '2024-06-10 09:47:15', TRUE),
+(3, 4, 'Es-tu libre pour une réunion demain ?', '2024-06-11 15:30:00', FALSE),
+(4, 3, 'Oui, je suis disponible à 10h.', '2024-06-11 15:35:45', TRUE),
+(5, 2, 'Je t’ai envoyé le document.', '2024-06-12 11:00:00', FALSE),
+(2, 5, 'Merci beaucoup !', '2024-06-12 11:05:30', TRUE),
+(1, 3, 'On se retrouve où pour le déjeuner ?', '2024-06-13 12:15:00', FALSE),
+(3, 1, 'Au café près du bureau.', '2024-06-13 12:20:10', TRUE),
+(4, 5, 'N’oublie pas de vérifier tes emails.', '2024-06-14 08:45:00', FALSE),
+(5, 4, 'C’est noté, merci.', '2024-06-14 08:50:30', TRUE);
+
 ALTER TABLE `book`
   ADD CONSTRAINT `link_book_user` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;

@@ -29,11 +29,6 @@ class AccountController
     $userManager = new UserManager();
     $user = $userManager->getUserById($id);
 
-    if (!$user) {
-      header("Location: index.php?action=connection");
-      exit;
-    }
-
     $bookManager = new BookManager();
     $books = $bookManager->getBooksByUser($user->getId());
 

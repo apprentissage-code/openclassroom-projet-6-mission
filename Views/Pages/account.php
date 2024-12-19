@@ -3,7 +3,7 @@
   <div class="card">
     <img src="Views/Images/<?=$user->getPicture()?>" alt="profil-picture" style="width:50px;">
     <h2><?= $user->getLogin() ?> </h2>
-    <p>Membre depuis <?=$user->getSeniority()?> mois</p>
+    <p>Membre depuis <?=$user->getSeniority()?></p>
     <h3>Bibliothèque</h3>
     <p><?= count($books) ?> livres</p>
   </div>

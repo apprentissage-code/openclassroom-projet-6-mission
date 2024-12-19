@@ -17,5 +17,5 @@
       <p><?= $book->getUser()->getLogin() ?></p>
     </a>
   </div>
-  <a href="#">Envoyer un message</a>
+  <a href="index.php?action=chat&receiver_id=<?= $book->getUser()->getId() ?>">Envoyer un message</a>
 </div>
