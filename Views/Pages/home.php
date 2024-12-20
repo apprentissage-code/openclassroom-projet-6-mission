@@ -2,28 +2,28 @@
   <div class="banner-info">
     <h1>Rejoignez nos lecteurs passionnés</h1>
     <p>Donnez une nouvelle vie à vos livres en les échangeant avec d'autres amoureux de la lecture. Nous croyons en la magie du partage de connaissances et d'histoires à travers les livres. </p>
-    <a href="index.php?action=allBooks">Découvrir</a>
+    <a href="index.php?action=allBooks" class="button-green">Découvrir</a>
   </div>
   <img src="Views/Images/banner-home.jpg" alt="Homme lisant un livre">
 </div>
 <div class="last-books">
   <h2>Les derniers livres ajoutés</h2>
-  <div class="books">
-    <div class="card-book">
-    <?php foreach ($books as $book) {
-      ?>
-      <a href="index.php?action=detailBook&id=<?= $book->getId()?>">
-        <div class="card-book">
-          <img class="picture-book" src="/Views/Images/<?= $book->getImage()?>" alt="picture-book" />
-          <h2><?= $book->getTitle() ?></h2>
-          <p><?= $book->getAuthor() ?></p>
-          <p>Vendu par : <?= $book->getUser()->getLogin() ?></p>
+  <div class="all-books">
+    <?php foreach ($books as $book) { ?>
+      <div class="card-book">
+        <a href="index.php?action=detailBook&id=<?= $book->getId() ?>">
+          <div>
+            <img class="picture-book" src="/Views/Images/<?= $book->getImage() ?>" alt="picture-book" />
+          </div>
+          <h2 class="card-title"><?= $book->getTitle() ?></h2>
+          <p class="card-content"><?= $book->getAuthor() ?></p>
+          <p class="card-content owner">Vendu par : <?= $book->getUser()->getLogin() ?></p>
           <p><?= ucfirst($book->getStatus()) ?></p>
-        </div>
-      </a>
+        </a>
+      </div>
     <?php } ?>
-    </div>
   </div>
+  <a href="index.php?action=allBooks" class="button-green">Voir tous les livres</a>
 </div>
 <div class="info-organization">
   <h2>Comment ça marche ?</h2>

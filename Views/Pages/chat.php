@@ -2,12 +2,12 @@
   <h1>Messagerie</h1>
   <?php foreach ($conversations as $conversation) { ?>
   <div class="card-conversation">
-   <a href="index.php?action=chat&receiver_id=<?= $conversation->getReceiver()->getId() ?>">
+   <a href="index.php?action=chat&receiver_id=<?= $conversation->getReceiverId() ?>">
       <div>
         <div>
-          <img src="Views/Images/<?= $conversation->getReceiver()->getPicture()?>" alt="photo-profil" style="width:50px;">
-          <p><?= $conversation->getReceiver()->getLogin() ?></p>
-          <p><?= $conversation->getsendAt()->format("d-m-Y H:i") ?></p>
+          <img src="Views/Images/<?= $conversation->getPicture()?>" alt="photo-profil" style="width:50px;">
+          <p><?= $conversation->getLogin() ?></p>
+          <p><?= $conversation->getSendAt()->format("d-m-Y H:i") ?></p>
         </div>
         <p><?= $conversation->getMessage() ?></p>
       </div>

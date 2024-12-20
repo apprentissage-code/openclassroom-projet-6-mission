@@ -7,6 +7,7 @@ class ChatManager extends AbstractEntityManager
     $sql = "SELECT
                 user.id,
                 user.login,
+                user.picture,
                 messages.message,
                 messages.sender_id,
                 messages.receiver_id AS receiver_id,
@@ -36,11 +37,13 @@ class ChatManager extends AbstractEntityManager
     $conversations = [];
 
     while ($data = $result->fetch()) {
-      $conversation = new Chat($data);
-      $userManager = new UserManager();
-      $receiver = $userManager->getUserById($data['receiver_id']);
-      $conversation->setReceiver($receiver);
+      // $conversation = new Chat($data);
+      // $userManager = new UserManager();
+      // $receiver = $userManager->getUserById($data['receiver_id']);
+      // $conversation->setReceiver($receiver);
+      $conversation = new Conversation($data);
       $conversations[] = $conversation;
+
     }
     return $conversations;
   }
