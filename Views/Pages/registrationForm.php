@@ -9,7 +9,7 @@
         <input type="text" name="email" id="email" required>
         <label for="password">Mot de passe</label>
         <input type="password" name="password" id="password" required>
-        <button class="submit">S'inscrire</button>
+        <button class="submit button-green">S'inscrire</button>
       </div>
     </form>
     <p>Déjà inscrit ? <a href="index.php?action=connection">Connectez-vous</a></p>
