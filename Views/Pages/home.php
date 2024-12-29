@@ -15,10 +15,11 @@
           <div>
             <img class="picture-book" src="/Views/Images/<?= $book->getImage() ?>" alt="picture-book" />
           </div>
-          <h2 class="card-title"><?= $book->getTitle() ?></h2>
-          <p class="card-content"><?= $book->getAuthor() ?></p>
-          <p class="card-content owner">Vendu par : <?= $book->getUser()->getLogin() ?></p>
-          <p><?= ucfirst($book->getStatus()) ?></p>
+          <div class="card-info">
+            <p class="card-title"><?= $book->getTitle() ?></p>
+            <p class="card-content"><?= $book->getAuthor() ?></p>
+            <p class="card-content owner">Vendu par : <?= $book->getUser()->getLogin() ?></p>
+          </div>
         </a>
       </div>
     <?php } ?>
@@ -28,19 +29,29 @@
 <div class="info-organization">
   <h2>Comment ça marche ?</h2>
   <p>Échanger des livres avec TomTroc c’est simple et amusant ! Suivez ces étapes pour commencer :</p>
-  <div class="card-step">
-    <p>Inscrivez-vous gratuitement sur notre plateforme.</p>
-    <p>Ajoutez les livres que vous souhaitez échanger à votre profil.</p>
-    <p>Parcourez les livres disponibles chez d'autres membres.</p>
-    <p>Proposez un échange et discutez avec d'autres passionnés de lecture.</p>
+  <div class="cards-step">
+    <div class="card-step">
+      <p>Inscrivez-vous gratuitement sur notre plateforme.</p>
+    </div>
+    <div class="card-step">
+      <p>Ajoutez les livres que vous souhaitez échanger à votre profil.</p>
+    </div>
+    <div class="card-step">
+      <p>Parcourez les livres disponibles chez d'autres membres.</p>
+    </div>
+    <div class="card-step">
+      <p>Proposez un échange et discutez avec d'autres passionnés de lecture.</p>
+    </div>
   </div>
-  <a href="index.php?action=allBooks">Voir tous les livres</a>
+  <a href="index.php?action=allBooks" class="button-green-empty">Voir tous les livres</a>
 </div>
-<img src="Views/Images/banner-home-2.jpg" alt="Librairie">
+<img class="banner-img" src="Views/Images/banner-home-2.jpg" alt="Librairie">
 <div class="values">
   <h2>Nos valeurs</h2>
-  <p>Chez Tom Troc, nous mettons l'accent sur le partage, la découverte et la communauté. Nos valeurs sont ancrées dans notre passion pour les livres et notre désir de créer des liens entre les lecteurs. Nous croyons en la puissance des histoires pour rassembler les gens et inspirer des conversations enrichissantes.</p>
-  <p>Notre association a été fondée avec une conviction profonde : chaque livre mérite d'être lu et partagé.</p>
-  <p>Nous sommes passionnés par la création d'une plateforme conviviale qui permet aux lecteurs de se connecter, de partager leurs découvertes littéraires et d'échanger des livres qui attendent patiemment sur les étagères.</p>
-  <p>L’équipe Tom Troc</p>
+  <div class="values-content">
+    <p>Chez Tom Troc, nous mettons l'accent sur le partage, la découverte et la communauté. Nos valeurs sont ancrées dans notre passion pour les livres et notre désir de créer des liens entre les lecteurs. Nous croyons en la puissance des histoires pour rassembler les gens et inspirer des conversations enrichissantes.</p>
+    <p>Notre association a été fondée avec une conviction profonde : chaque livre mérite d'être lu et partagé.</p>
+    <p>Nous sommes passionnés par la création d'une plateforme conviviale qui permet aux lecteurs de se connecter, de partager leurs découvertes littéraires et d'échanger des livres qui attendent patiemment sur les étagères.</p>
+  </div>
+  <p class="owner">L’équipe Tom Troc</p>
 </div>

@@ -16,12 +16,21 @@
   --fontBody: 'Inter';
 }
 
-
-h1, h2 {
+h1,
+h2 {
   font-family: var(--fontTitle);
   color: var(--fontColor);
   font-size: 32px;
   font-weight: 400;
+  padding: 20px 0px;
+  text-align: center;
+}
+
+h3 {
+  font-family: var(--fontBody);
+  color: var(--fontColor);
+  font-size: 14px;
+  padding: 20px 0px;
 }
 
 p {
@@ -37,7 +46,6 @@ a {
 }
 
 .button-green {
-  text-decoration: none;
   background-color: var(--buttonColorGreen);
   color: #FFFFFF;
   font-family: var(--fontBody);
@@ -45,29 +53,46 @@ a {
   border-radius: 10px;
 }
 
+.button-green-empty {
+  background-color: var(--backgroundColor);
+  color: var(--buttonColorGreen);
+  font-family: var(--fontBody);
+  padding: 20px;
+  border-radius: 10px;
+  border: solid 2px var(--buttonColorGreen);
+  margin-top: 20px;
+}
+
+/* Header */
+
 header {
   height: 80px;
   display: flex;
   justify-content: space-between;
-  text-align: center;
+  align-items: center;
   width: 100%;
   padding: 15px;
   background-color: var(--backgroundColor);
 }
 
-header img{
+header img {
   height: 51px;
   width: 150px;
   margin-left: 150px;
 }
 
-header p{
+header p {
   font-family: var(--fontBody);
   font-size: 14px;
   font-weight: 400;
 }
 
+/* Footer */
+
 footer {
+  position:static;
+  bottom: 0;
+  left: 0;
   width: 100%;
   height: 61px;
   background-color: var(--secondBackgroundColor);
@@ -89,11 +114,12 @@ footer img {
   height: 18px;
 }
 
+/* Page home */
 .banner {
   background-color: var(--backgroundColor);
   display: flex;
-  justify-content: space-between;
-  text-align: center;
+  justify-content: space-around;
+  align-items: center;
   padding: 50px;
 }
 
@@ -102,49 +128,288 @@ footer img {
   width: 405px;
 }
 
-.banner-info{
+.banner-info {
   padding: 20px;
   width: 40%;
 }
 
 .banner-info h1 {
   font-size: 36px;
+  text-align: start;
+}
+
+.banner-info p {
+  margin-bottom: 50px;
 }
 
 .last-books {
   background-color: #FAF9F7;
-  padding: 20px;
-}
-
-.card-book {
-  width: 200px;
-  height: 325px;
-  background-color: var(--secondBackgroundColor);
-}
-
-.card-book img{
-  object-fit: cover;
-  width: 100%;
-  height: 50%;
+  padding: 50px 20px;
+  text-align: center;
 }
 
 .all-books {
   display: flex;
   justify-content: space-between;
-  text-align: center;
+  margin-bottom: 50px;
 }
 
-.card-title {
-  font-family: var(--fontBody);
-  font-size: 16px;
-}
-
-.card-content{
-  color: #A6A6A6;
-  font-size: 14px;
-}
 
 .owner {
   font-style: italic;
   font-size: 10px;
 }
+
+.info-organization {
+  background-color: var(--backgroundColor);
+  padding: 50px 20px;
+  text-align: center;
+
+}
+
+.banner-img {
+  object-fit: cover;
+  width: 100%;
+  height: 230px;
+}
+
+.cards-step {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 50px 80px;
+}
+
+.card-step {
+  height: 140px;
+  padding: 50px 20px;
+  background-color: #FFFFFF;
+  text-align: center;
+  margin-left: 20px;
+}
+
+.values {
+  background-color: var(--backgroundColor);
+  padding: 100px 450px;
+  background-image: url("../Views/Images/heart.png");
+  background-size: auto;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-position: 75% 95%;
+}
+
+.values-content p {
+  margin-bottom: 10px;
+}
+
+/* Card Book */
+
+.card-book {
+  width: 200px;
+  height: 370px;
+  background-color: var(--secondBackgroundColor);
+  border-radius: 10px;
+  position: relative;
+}
+
+.card-book img {
+  object-fit: cover;
+  width: 100%;
+  height: 260px;
+}
+
+.card-info {
+  padding: 10px;
+}
+
+.card-title {
+  font-family: var(--fontBody);
+  font-weight: 400;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.card-content {
+  color: #A6A6A6;
+  font-size: 14px;
+}
+
+/* Page allbooks */
+
+.book-list {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.content {
+  background-color: #FAF9F7;
+  padding: 20px 70px;
+}
+
+.books-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.search {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 400px;
+}
+
+.search img {
+  position: absolute;
+  left: 15px;
+  width: 20px;
+  height: 20px;
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.search-bar input[type="text"] {
+  background-color: var(--secondBackgroundColor);
+  padding: 15px 40px;
+  border-radius: 5px;
+  border: solid 1px #F0F0F0;
+}
+
+.status {
+  font-family: var(--fontBody);
+  font-size: 11px;
+  padding: 5px;
+  border-radius: 30px;
+  font-weight: 500;
+  color: #FFFFFF;
+  width: fit-content;
+  position: absolute;
+  top: 10px;
+  left: 65%;
+  z-index: 10;
+}
+
+.status.available {
+  background-color: var(--tageBookAvailable);
+}
+
+.status.unavailable {
+  background-color: var(--tagBookUnavailable);
+}
+
+/* Page book */
+.book {
+  margin-left: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #FAF9F7;
+}
+
+.book-image {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.picture-book {
+  width: 60%;
+}
+
+.owner-image {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.book-owner {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  margin-bottom: 60px;
+  background-color: var(--secondBackgroundColor);
+  padding: 20px;
+  width: fit-content;
+  border-radius: 114px;
+}
+
+.book-owner p {
+  padding: 10px;
+}
+
+.book-author {
+  color: #A6A6A6;
+  font-size: 19px;
+  margin-bottom: 20px;
+}
+
+.site-path,
+.site-path a{
+  padding: 10px 0px;
+  color: #A6A6A6;
+  font-size: 10px;
+}
+
+hr {
+  width: 50px;
+}
+
+/* Page AccountPublic */
+.account-public {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.card-profil {
+  background-color: var(--secondBackgroundColor);
+  padding: 30px;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 20px;
+}
+
+.owner-image-account {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.book-icon {
+  display: flex;
+  justify-content: flex-start;
+}
+
+table {
+  background-color: var(--secondBackgroundColor);
+  border-radius: 20px;
+  font-family: var(--fontBody);
+  border-collapse: collapse;
+  padding: 10px;
+  margin-top: 20px;
+}
+
+th, td {
+  text-align: center;
+  padding: 10px;
+}
+
+td img {
+  width: 70px;
+}
+
+tbody tr:nth-child(odd) {
+  background-color: #F5F3EF;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #EDF2F6;
+}
+
+/* Connexion */

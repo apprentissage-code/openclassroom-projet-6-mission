@@ -1,26 +1,32 @@
 <div class="content">
-  <h1>Nos livres à l'échange</h1>
-  <a href="index.php?action=account">Mon Compte</a>
-  <div class="search-bar">
-  <form action="index.php" method="get">
-      <input type="hidden" name="action" value="allBooks">
-      <input type="text" id="search" name="search" placeholder="Rechercher un livre" value="<?= htmlspecialchars($_GET['search'] ?? '') ?>">
-      <button type="submit">Rechercher</button>
-    </form>
+  <div class="books-title">
+    <h1>Nos livres à l'échange</h1>
+    <div class="search-bar">
+      <form action="index.php" method="get">
+        <div class="search">
+          <img src="Views/Images/search.svg" alt="icone-search">
+          <input type="text" id="search" name="search" placeholder="Rechercher un livre" value="<?= htmlspecialchars($_GET['search'] ?? '') ?>">
+        </div>
+        <input type="hidden" name="action" value="allBooks">
+      </form>
+    </div>
   </div>
 
-  <div class="bookList">
-    <?php foreach ($books as $book) {
-      ?>
-      <a href="index.php?action=detailBook&id=<?= $book->getId()?>">
-        <div class="card-book">
-          <img class="picture-book" src="/Views/Images/<?= $book->getImage()?>" alt="picture-book" />
-          <h2><?= $book->getTitle() ?></h2>
-          <p><?= $book->getAuthor() ?></p>
-          <p>Vendu par : <?= $book->getUser()->getLogin() ?></p>
-          <p><?= ucfirst($book->getStatus()) ?></p>
-        </div>
-      </a>
+  <div class="book-list">
+    <?php foreach ($books as $book) { ?>
+      <div class="card-book">
+        <a href="index.php?action=detailBook&id=<?= $book->getId() ?>">
+          <div>
+            <img class="picture-book" src="/Views/Images/<?= $book->getImage() ?>" alt="picture-book" />
+          </div>
+          <div class="card-info">
+            <p class="card-title"><?= $book->getTitle() ?></p>
+            <p class="card-content"><?= $book->getAuthor() ?></p>
+            <p class="card-content owner">Vendu par : <?= $book->getUser()->getLogin() ?></p>
+            <p class="status <?= $book->getStatus() === "disponible" ? "available" : "unavailable" ?>"><?= ucfirst($book->getStatus()) ?></p>
+          </div>
+        </a>
+      </div>
     <?php } ?>
   </div>
 </div>
