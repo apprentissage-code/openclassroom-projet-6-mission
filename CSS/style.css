@@ -554,3 +554,53 @@ form p a {
 .card-height {
   height: 472px;
 }
+
+/* Page BookForm */
+.book-form {
+  display: flex;
+}
+
+.form-info {
+  padding: 20px;
+}
+
+.form-photo {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+
+.form-photo label {
+  margin-bottom: 0;
+}
+
+.form-photo img {
+  width: 70%;
+}
+
+.input-select {
+  width: 100%;
+  padding: 10px 15px;
+  font-size: 14px;
+  font-family: var(--fontBody);
+  border: 1px solid #d1d5db;
+  border-radius: 5px;
+  background-color: #EDF2F6;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+input[type=file] {
+  border: none;
+  font-family: var(--fontBody);
+  padding: 10px 0px;
+}
+
+input[type=file]::file-selector-button {
+  background-color: var(--buttonColorGreen);
+  color: #FFFFFF;
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+}
