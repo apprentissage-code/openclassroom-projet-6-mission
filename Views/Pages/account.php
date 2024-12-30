@@ -1,28 +1,33 @@
-<div>
-  <h1>Mon compte</h1>
-  <div class="card">
-    <img src="Views/Images/<?=$user->getPicture()?>" alt="profil-picture" style="width:50px;">
-    <h2><?= $user->getLogin() ?> </h2>
-    <p>Membre depuis <?=$user->getSeniority()?></p>
-    <h3>Bibliothèque</h3>
-    <p><?= count($books) ?> livres</p>
-  </div>
-  <div class="card">
-    <form action="index.php?action=updateUser" method="post" class="foldedCorner">
-      <h2>Vos informations personnelles</h2>
-      <div class="formGrid">
-        <label for="login">Pseudo</label>
-        <input type="text" name="login" id="login" value="<?= $user->getLogin() ?>" required>
-        <label for="email">Email</label>
-        <input type="text" name="email" id="email" value="<?= $user->getEmail() ?>" required>
-        <label for="password">Mot de passe</label>
-        <input type="password" name="password" id="password" value="<?= $user->getPassword() ?>" required>
-        <button class="submit">Enregistrer</button>
+<div class="content account">
+  <h1 class="align-start">Mon compte</h1>
+  <div class="cards-profil">
+    <div class="card-profil card-height">
+      <img src="Views/Images/<?= $user->getPicture() ?>" alt="profil-picture" class="owner-image-account">
+      <h2><?= $user->getLogin() ?> </h2>
+      <p>Membre depuis <?= $user->getSeniority() ?></p>
+      <h3>Bibliothèque</h3>
+      <div class="book-icon">
+        <img src="Views/Images/book-icon.svg" alt="">
+        <p><?= count($books) ?> livres</p>
       </div>
-    </form>
+    </div>
+    <div class="card-info-profil">
+      <form action="index.php?action=updateUser" method="post" class="foldedCorner">
+        <h3>Vos informations personnelles</h3>
+        <div class="formGrid">
+          <label for="login">Pseudo</label>
+          <input type="text" name="login" id="login" value="<?= $user->getLogin() ?>" class="input-filled" required>
+          <label for="email">Email</label>
+          <input type="text" name="email" id="email" value="<?= $user->getEmail() ?>" class="input-filled" required>
+          <label for="password">Mot de passe</label>
+          <input type="password" name="password" id="password" value="<?= $user->getPassword() ?>" class="input-filled" required>
+          <button class="submit button-green">Enregistrer</button>
+        </div>
+      </form>
+    </div>
   </div>
-  <a href="index.php?action=addBook">Ajouter un livre</a>
-  <table>
+  <a class="button-green" href="index.php?action=addBook">Ajouter un livre</a>
+  <table class="table-account">
     <thead>
       <tr>
         <th>PHOTO</th>
@@ -36,12 +41,12 @@
     <tbody>
       <?php foreach ($books as $book) { ?>
         <tr>
-          <td><img class="picture-book" src="/Views/Images/<?= $book->getImage() ?>" alt="picture-book" style="width:50px;" /></td>
+          <td><img src="/Views/Images/<?= $book->getImage() ?>" alt="picture-book" /></td>
           <td><?= $book->getTitle() ?></td>
           <td><?= $book->getAuthor() ?></td>
           <td><?= $book->getDescription() ?></td>
-          <td><?= $book->getStatus() ?></td>
-          <td><a href="index.php?action=updateBook&id=<?= $book->getId() ?>">Editer</a> <a href="index.php?action=deleteBook&id=<?= $book->getId() ?>">Supprimer</a></td>
+          <td><p class="status-account <?= $book->getStatus() === "disponible" ? "available" : "unavailable" ?>"><?= ucfirst($book->getStatus()) ?></p></td>
+          <td class="table-modify"><a href="index.php?action=updateBook&id=<?= $book->getId() ?>" class="button-edit">Editer</a> <a href="index.php?action=deleteBook&id=<?= $book->getId() ?>" class="button-delete">Supprimer</a></td>
         </tr>
       <?php } ?>
     </tbody>

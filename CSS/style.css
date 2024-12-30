@@ -63,6 +63,10 @@ a {
   margin-top: 20px;
 }
 
+.align-start {
+  text-align: start;
+}
+
 /* Header */
 
 header {
@@ -291,11 +295,13 @@ footer img {
   z-index: 10;
 }
 
-.status.available {
+.status.available,
+.status-account.available {
   background-color: var(--tageBookAvailable);
 }
 
-.status.unavailable {
+.status.unavailable,
+.status-account.unavailable  {
   background-color: var(--tagBookUnavailable);
 }
 
@@ -372,6 +378,7 @@ hr {
   flex-direction: column;
   align-items: center;
   margin-right: 20px;
+  border-radius: 20px;
 }
 
 .owner-image-account {
@@ -441,40 +448,109 @@ tbody tr:nth-child(even) {
   align-items: flex-start;
 }
 
-.connection-form label {
+form label {
   font-size: 14px;
   font-family: var(--fontBody);
   margin-bottom: 10px;
   color: #A6A6A6;
 }
 
-.connection-form input {
+form input {
   width: 100%;
   padding: 15px;
   margin-bottom: 20px;
   border: 1px solid #E0E0E0;
   border-radius: 5px;
   font-size: 14px;
-  color: #A6A6A6;
 }
 
-.connection-form .submit {
+form .submit {
   border: none;
   cursor: pointer;
   transition: background-color 0.3s;
 }
 
-.connection-form .submit:hover {
+form .submit:hover {
   background-color: var(--secondButtonColorGreen);
 }
 
-.connection-form p {
+form p {
   margin-top: 20px;
   font-size: 14px;
   color: #292929;
 }
 
-.connection-form p a {
+form p a {
   text-decoration: underline;
   color: #292929;
+}
+
+/* Page Account */
+
+.account {
+  background-color: #FAF9F7;
+}
+
+.cards-profil {
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  margin-bottom: 40px;
+}
+
+.table-account {
+  margin-top: 50px;
+  width: 100%;
+}
+
+.table-account th,
+.table-account td {
+  min-width: 120px;
+}
+
+.card-info-profil {
+  background-color: var(--secondBackgroundColor);
+  padding: 50px;
+  width: 60%;
+  border-radius: 20px;
+}
+
+.status-account {
+  font-family: var(--fontBody);
+  font-size: 11px;
+  border-radius: 30px;
+  color: white;
+  padding: 5px 15px;
+  min-width: 80px;
+  z-index: 10;
+}
+
+.table-modify {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-top: 35px;
+}
+
+.button-delete {
+  color: var(--tagBookUnavailable);
+  text-decoration: underline;
+  font-weight: 500;
+  padding: 10px;
+}
+
+.button-edit {
+  color: var(--fontColor);
+  text-decoration: underline;
+  font-weight: 500;
+  padding: 10px;
+}
+
+.input-filled {
+  background-color: #EDF2F6;
+}
+
+.card-height {
+  height: 472px;
 }
