@@ -20,7 +20,7 @@
       <p>Accueil</p>
     </a>
     <a href="index.php?action=allBooks"><p>Nos livres à l'échange</p></a>
-    <a href="index.php?action=chat&receiver_id=1"><p>Messagerie</p></a>
+    <a href="index.php?action=<?= isset($_SESSION['user']) ? 'chat&receiver_id=1' : 'connection'?>"><p>Messagerie</p></a>
     <a href="index.php?action=<?= isset($_SESSION['user']) ? 'account' : 'connection' ?>"><p>Mon Compte</p></a>
     <?php
     if (isset($_SESSION['user'])) {

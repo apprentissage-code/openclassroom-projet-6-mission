@@ -1,4 +1,5 @@
 <div class="content">
+  <p class="site-path"> <a href="index.php?action=account">Compte</a> > Ajouter un livre</p>
   <h1 class="align-start">Modifier les informations</h1>
   <form action="index.php?action=addBook" method="post" enctype="multipart/form-data">
     <div class="form-photo" style="padding-bottom: 0px;">

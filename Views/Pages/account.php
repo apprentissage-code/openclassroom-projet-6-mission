@@ -46,7 +46,7 @@
           <td><?= $book->getAuthor() ?></td>
           <td><?= $book->getDescription() ?></td>
           <td><p class="status-account <?= $book->getStatus() === "disponible" ? "available" : "unavailable" ?>"><?= ucfirst($book->getStatus()) ?></p></td>
-          <td class="table-modify"><a href="index.php?action=updateBook&id=<?= $book->getId() ?>" class="button-edit">Editer</a> <a href="index.php?action=deleteBook&id=<?= $book->getId() ?>" class="button-delete">Supprimer</a></td>
+          <td class="table-modify"><a href="index.php?action=updateBook&id=<?= $book->getId() ?>" class="button-edit">Editer</a> <a href="index.php?action=deleteBook&id=<?= $book->getId() ?>" <?= Utils::askConfirmation("Êtes-vous sûr de vouloir supprimer ce livre ?") ?> class="button-delete">Supprimer</a></td>
         </tr>
       <?php } ?>
     </tbody>
