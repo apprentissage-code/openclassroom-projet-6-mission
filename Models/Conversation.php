@@ -22,6 +22,10 @@ class Conversation
     $this->sendAt = new DateTime($data['sent_at']);
     $this->is_read = $data['is_read'];
   }
+  public function getId()
+  {
+    return $this->id;
+  }
 
   public function getLogin(): string
   {
@@ -47,5 +51,11 @@ class Conversation
   {
     return $this->receiverId;
   }
+
+  public function getSenderId(): int
+  {
+    return $this->senderId;
+  }
+
 
 }

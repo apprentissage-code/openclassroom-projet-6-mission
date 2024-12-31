@@ -623,12 +623,16 @@ input[type=file]::file-selector-button {
   flex: 1;
   padding: 0px 20px;
   background-color: #FAF9F7;
-  /* height: 100%; */
 }
 
 .actual-conversation {
   flex: 2;
   padding: 20px;
+}
+
+.messages {
+  overflow-y: scroll;
+  max-height: 500px;
 }
 
 .message-title {
@@ -643,11 +647,89 @@ input[type=file]::file-selector-button {
 }
 
 .form-message-input {
-  flex:2;
+  flex: 2;
   margin-right: 10px;
 }
 
 .form-message-submit {
   flex: 1;
   padding: 15px;
+}
+
+.card-conversation {
+  width: 100%;
+}
+
+.conversation-info {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.conversation-info img {
+  margin: 0px 10px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex: 1;
+}
+
+.conversation-user-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.conversation-last-message {
+  flex: 5;
+}
+
+.conversation-user-info p {
+  padding-right: 10px;
+}
+
+.last-message {
+  color: #A6A6A6;
+  font-size: 12px;
+  padding: 10px 0px;
+}
+
+.conversation-message {
+  color: #000000;
+  padding: 15px;
+  width: 60%;
+}
+
+.sender-message {
+  display: flex;
+  align-items: center;
+  margin: 10px 0px;
+}
+
+.sender-message p {
+  color: #A6A6A6;
+  font-size: 12px;
+  padding: 0px 10px;
+}
+
+.card-message {
+  display: flex;
+  flex-direction: column;
+}
+
+.message-left {
+  align-items: flex-start;
+}
+
+.message-right {
+  align-items: flex-end;
+}
+
+.message-left .conversation-message {
+  background-color: var(--secondBackgroundColor);
+}
+
+.message-right .conversation-message {
+  background-color: #EDF2F6;
 }

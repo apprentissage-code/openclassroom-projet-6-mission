@@ -3,32 +3,35 @@
     <h1 class="align-start">Messagerie</h1>
     <?php foreach ($conversations as $conversation) { ?>
       <div class="card-conversation">
-        <a href="index.php?action=chat&receiver_id=<?= $conversation->getReceiverId() ?>">
-          <div>
-            <div>
-              <img src="Views/Images/<?= $conversation->getPicture() ?>" alt="photo-profil" class="owner-image">
-              <p><?= $conversation->getLogin() ?></p>
-              <p><?= $conversation->getSendAt()->format("d-m-Y H:i") ?></p>
+        <a href="index.php?action=chat&receiver_id=<?= $conversation->getReceiverId() == $user->getId() ? $conversation->getSenderId() : $conversation->getReceiverId() ?>">
+          <div class="conversation-info">
+            <img src="Views/Images/<?= $conversation->getPicture() ?>" alt="photo-profil">
+            <div class="conversation-last-message">
+              <div class="conversation-user-info">
+                <p><?= $conversation->getLogin() ?></p>
+                <p><?= $conversation->getSendAt()->format("d-m-Y H:i") ?></p>
+              </div>
+              <p class="last-message"><?= $conversation->getMessage() ?></p>
             </div>
-            <p><?= $conversation->getMessage() ?></p>
           </div>
         </a>
       </div>
     <?php } ?>
   </div>
   <div class="actual-conversation">
+    <div class="message-title">
+      <img src="Views/Images/<?= $receiver->getPicture() ?>" alt="photo-profil" class="owner-image">
+      <h3 style="padding: 10px;"><?= $receiver->getLogin() ?></h3>
+    </div>
     <div class="messages">
-      <div class="message-title">
-        <img src="Views/Images/<?= $receiver->getPicture() ?>" alt="photo-profil" class="owner-image">
-        <h3 style="padding: 10px;"><?= $receiver->getLogin() ?></h3>
-      </div>
-      <?php foreach ($messages as $message) {
+      <?php foreach ($messages as $index => $message) {
       ?>
-        <div class="card-message">
-          <p><?= $message->getsendAt()->format("d-m-Y H:i") ?></p>
-          <p><?= $message->getSenderId() == $user->getId() ? $user->getLogin() : $receiver->getLogin() ?></p>
-          <img src="Views/Images/<?= $message->getSenderId() == $user->getId() ? $user->getPicture() : $receiver->getPicture() ?>" alt="photo-profil" class="owner-image">
-          <p><?= $message->getMessage() ?></p>
+        <div class="card-message <?= $index % 2 == 0 ? 'message-left' : 'message-right' ?>">
+          <div class="sender-message">
+            <img src="Views/Images/<?= $message->getSenderId() == $user->getId() ? $user->getPicture() : $receiver->getPicture() ?>" alt="photo-profil" class="owner-image">
+            <p><?= $message->getsendAt()->format("d-m-Y H:i") ?></p>
+          </div>
+          <p class="conversation-message <?= $index % 2 == 0 ? 'message-left' : 'message-right' ?>"><?= $message->getMessage() ?></p>
         </div>
       <?php } ?>
     </div>
