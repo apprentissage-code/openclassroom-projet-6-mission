@@ -16,6 +16,20 @@
   --fontBody: 'Inter';
 }
 
+/* body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+} */
+
+main {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+}
+
 h1,
 h2 {
   font-family: var(--fontTitle);
@@ -44,6 +58,7 @@ a {
   text-decoration: none;
   color: var(--fontColor);
 }
+
 
 .button-green {
   background-color: var(--buttonColorGreen);
@@ -99,14 +114,13 @@ header p {
 
 footer {
   position: static;
-  bottom: 0;
-  left: 0;
   width: 100%;
   height: 61px;
   background-color: var(--secondBackgroundColor);
   display: flex;
   justify-content: flex-end;
   padding: 15px;
+  align-items: center;
 }
 
 footer p {
@@ -252,7 +266,8 @@ footer img {
 
 .content {
   background-color: #FAF9F7;
-  padding: 20px 70px;
+  padding: 0px 70px;
+  flex: 1;
 }
 
 .books-title {
@@ -312,17 +327,25 @@ footer img {
 
 /* Page book */
 .book {
-  margin-left: auto;
+  flex: 1;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   background-color: #FAF9F7;
+  flex-direction: row;
 }
 
 .book-image {
+  flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  width: 100%;
+}
+
+.info-book {
+  flex: 2;
+  padding: 0px 50px;
 }
 
 .picture-book {
@@ -613,6 +636,7 @@ input[type=file]::file-selector-button {
 
 /* Page Chat */
 .chat {
+  flex: 1;
   display: flex;
   width: 100%;
   background-color: #F5F3EF;
