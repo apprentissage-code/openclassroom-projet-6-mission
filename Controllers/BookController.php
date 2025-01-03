@@ -49,9 +49,9 @@ class BookController extends AbstractEntityController
   {
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-      $title = Utils::request('title');
-      $author = Utils::request('author');
-      $description = Utils::request('description');
+      $title = htmlspecialchars(trim(Utils::request('title')));
+      $author = htmlspecialchars(trim(Utils::request('author')));
+      $description = htmlspecialchars(trim(Utils::request('description')));
       $image = ManageImage::uploadImage();
       $user = $this->getCurrentUser();
 
@@ -85,10 +85,10 @@ class BookController extends AbstractEntityController
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
       $data = [
-        'title' => Utils::request('title'),
-        'author' => Utils::request('author'),
-        'description' => Utils::request('description'),
-        'status' => Utils::request('status'),
+        'title' => htmlspecialchars(trim(Utils::request('title'))),
+        'author' => htmlspecialchars(trim(Utils::request('author'))),
+        'description' => htmlspecialchars(trim(Utils::request('description'))),
+        'status' => htmlspecialchars(trim(Utils::request('status'))),
         'picture' => ManageImage::uploadImage($book->getImage()),
         'date_update' => (new DateTime())->format('Y-m-d H:i:s')
       ];

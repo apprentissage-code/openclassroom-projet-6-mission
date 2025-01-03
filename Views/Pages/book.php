@@ -21,7 +21,7 @@
           <p><?= $book->getUser()->getLogin() ?></p>
         </a>
       </div>
-      <a href="index.php?action=chat&receiver_id=<?= $book->getUser()->getId() ?>" class="button-green">Envoyer un message</a>
+      <a href="index.php?action=<?= isset($_SESSION['user']) ? 'chat&receiver_id=' . $book->getUser()->getId() : 'connection' ?>" class="button-green">Envoyer un message</a>
     </div>
   </div>
 </div>

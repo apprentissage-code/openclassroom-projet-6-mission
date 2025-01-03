@@ -40,43 +40,44 @@ class AccountController extends AbstractEntityController
 
   public function connectUser(): void
   {
+
+    $error = null;
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-      $email = Utils::request("email");
-      $password = Utils::request("password");
+      $email = htmlspecialchars(trim(Utils::request("email")));
+      $password = htmlspecialchars(trim(Utils::request("password")));
 
       if (empty($email) || empty($password)) {
-        throw new Exception("Tous les champs sont obligatoires.");
+        $error = "Tous les champs sont obligatoires.";
+      } else {
+        $userManager = new UserManager();
+        $user = $userManager->getUserByEmail($email);
+
+        if (!$user) {
+          $error = "L'utilisateur demandé n'existe pas.";
+        } elseif (!password_verify($password, $user->getPassword())) {
+          $error = "Le mot de passe est incorrect.";
+        } else {
+          $_SESSION['user'] = $user;
+          header("Location: index.php?action=account");
+          exit;
+        }
       }
-
-      $userManager = new UserManager();
-      $user = $userManager->getUserByEmail($email);
-      if (!$user) {
-        throw new Exception("L'utilisateur demandé n'existe pas.");
-      }
-
-      if (!password_verify($password, $user->getPassword())) {
-        $hash = password_hash($password, PASSWORD_DEFAULT);
-        throw new Exception("Le mot de passe est incorrect.");
-      }
-
-      $_SESSION['user'] = $user;
-
-      header("Location: index.php?action=account");
     }
 
     $view = new View("Connexion");
-    $view->render("connectionForm");
+    $view->render("connectionForm", ['error' => $error]);
   }
 
   public function registrateUser(): void
   {
+    $error = null;
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-      $login = Utils::request("login");
-      $email = Utils::request("email");
-      $password = Utils::request("password");
+      $login = htmlspecialchars(trim(Utils::request("login")));
+      $email = htmlspecialchars(trim(Utils::request("email")));
+      $password = htmlspecialchars(trim(Utils::request("password")));
 
       if (empty($email) || empty($password) || empty($login)) {
-        throw new Exception("Tous les champs sont obligatoires.");
+        $error = "Tous les champs sont obligatoires.";
       }
 
       $user = new User([
@@ -92,7 +93,7 @@ class AccountController extends AbstractEntityController
     }
 
     $view = new View("Inscription");
-    $view->render("registrationForm");
+    $view->render("registrationForm", ["error" => $error]);
   }
 
   public function disconnectUser(): void
@@ -111,16 +112,19 @@ class AccountController extends AbstractEntityController
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       $data = [
-        'login' => Utils::request('login'),
-        'email' => Utils::request('email'),
-        'password' => password_hash(Utils::request('password'), PASSWORD_DEFAULT)
+        'login' => htmlspecialchars(trim(Utils::request('login'))),
+        'email' => htmlspecialchars(trim(Utils::request('email'))),
+        'password' => !empty(trim(Utils::request('password')))
+          ? password_hash(trim(Utils::request('password')), PASSWORD_DEFAULT)
+          : $user->getPassword()
       ];
 
       $user->update($data);
       $userManager->updateUser($user);
 
+      $_SESSION['user'] = $userManager->getUserById($id);
+
       header("Location: index.php?action=account");
     }
-
   }
 }

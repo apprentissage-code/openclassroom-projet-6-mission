@@ -21,7 +21,7 @@
   <div class="actual-conversation">
     <div class="message-title">
       <img src="Views/Images/<?= $receiver->getPicture() ?>" alt="photo-profil" class="owner-image">
-      <h3 style="padding: 10px;"><?= $receiver->getLogin() ?></h3>
+      <h3 class="p-10"><?= $receiver->getLogin() ?></h3>
     </div>
     <div class="messages">
       <?php foreach ($messages as $index => $message) {

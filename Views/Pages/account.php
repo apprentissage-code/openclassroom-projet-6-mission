@@ -16,11 +16,11 @@
         <h3>Vos informations personnelles</h3>
         <div class="formGrid">
           <label for="login">Pseudo</label>
-          <input type="text" name="login" id="login" value="<?= $user->getLogin() ?>" class="input-filled" required>
+          <input type="text" name="login" id="login" value="<?= htmlspecialchars($user->getLogin()) ?>" class="input-filled" required>
           <label for="email">Email</label>
-          <input type="text" name="email" id="email" value="<?= $user->getEmail() ?>" class="input-filled" required>
+          <input type="text" name="email" id="email" value="<?= htmlspecialchars($user->getEmail()) ?>" class="input-filled" required>
           <label for="password">Mot de passe</label>
-          <input type="password" name="password" id="password" value="<?= $user->getPassword() ?>" class="input-filled" required>
+          <input type="password" name="password" id="password" placeholder="••••••••" class="input-filled">
           <button class="submit button-green">Enregistrer</button>
         </div>
       </form>

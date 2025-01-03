@@ -8,7 +8,7 @@
       <img src="Views/Images/book-icon.svg" alt="">
       <p><?= count($books) ?> livres</p>
     </div>
-    <a href="index.php?action=chat&receiver_id=<?= $user->getId() ?>" class="button-green-empty">Ecrire un message</a>
+    <a href="index.php?action=<?= isset($_SESSION['user']) ? 'chat&receiver_id=' . $user->getId() : 'connection' ?>" class="button-green-empty">Ecrire un message</a>
   </div>
   <table>
     <thead>

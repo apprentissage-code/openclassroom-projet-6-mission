@@ -9,6 +9,9 @@
         <input type="text" name="email" id="email" required>
         <label for="password">Mot de passe</label>
         <input type="password" name="password" id="password" required>
+        <? if (!empty($error)): ?>
+          <div class="error-message"><?= htmlspecialchars($error) ?></div>
+        <? endif; ?>
         <button class="submit button-green">S'inscrire</button>
       </div>
     </form>

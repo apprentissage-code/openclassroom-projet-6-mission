@@ -16,13 +16,6 @@
   --fontBody: 'Inter';
 }
 
-/* body {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  margin: 0;
-} */
-
 main {
   display: flex;
   flex-direction: column;
@@ -82,6 +75,10 @@ a {
 
 .align-start {
   text-align: start;
+}
+
+.p-10 {
+  padding: 10px;
 }
 
 /* Header */
@@ -596,7 +593,7 @@ form .submit:hover {
 .form-photo {
   display: flex;
   flex-direction: column;
-  padding: 20px;
+  padding: 0px 20px;
 }
 
 .form-photo label {
@@ -623,6 +620,7 @@ input[type=file] {
   border: none;
   font-family: var(--fontBody);
   padding: 10px 0px;
+  margin: 0px;
 }
 
 input[type=file]::file-selector-button {
@@ -756,4 +754,20 @@ input[type=file]::file-selector-button {
 
 .message-right .conversation-message {
   background-color: #EDF2F6;
+}
+
+.error-message {
+  font-family: var(--fontBody);
+  padding: 0px 0px 15px 0px;
+  color: red;
+  font-weight: bold;
+}
+
+.error {
+  text-align: center;
+}
+
+.error h3 {
+  padding: 10px;
+  margin-bottom: 30px;
 }

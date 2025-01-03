@@ -6,7 +6,7 @@ class ChatController extends AbstractEntityController
   {
     $receiverId = Utils::request("receiver_id", -1);
     $senderId = $this->getCurrentUser()->getId();
-    $content = Utils::request('content');
+    $content = htmlspecialchars(trim(Utils::request('content')));
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       $message = new Chat([
