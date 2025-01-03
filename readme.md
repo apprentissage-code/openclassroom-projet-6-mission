@@ -8,4 +8,4 @@
 ## Lancer le projet :
 Pour la configuration du projet renomez le fichier _config.php (dans le dossier config) en config.php et éditez le si nécessaire. Ce fichier contient notamment les informations de connextion à la base de données.
 
-Pour vous connecter sur un compte, vous pouvez utiliser le login est "Solène" et le mot de passe est "password"
+Pour vous connecter sur un compte, vous pouvez utiliser le login est "solene.baudic@test.com" et le mot de passe est "password"
